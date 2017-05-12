@@ -1,3 +1,5 @@
+/*Program to calculate Greatest Common Divisor(GCD) of given two number provided as input using Recursion*/
+
 #include<stdio.h>
 #include<conio.h>
 int gcd(int,int);
