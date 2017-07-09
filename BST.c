@@ -80,7 +80,7 @@ void insert(NODEPTR *proot,int val)								/*function definition to insert a nod
 {
 	NODEPTR newNode, currNode;								/*variable to hold new and current node*/
 	int found=0, flag = 0;
-	found = search(*proot,val);								/*function call top search a value*/
+	found = search(*proot,val);								/*function call to search for whether the argument value is present or not*/
 	if(found == 1)										/*check for duplicate values*/
 	{
 		printf("\nNode with value %d is already present in BST.\nTry Again!.",val);
