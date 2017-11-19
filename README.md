@@ -1,1 +1,1 @@
-Welcome to C repository. This repository contains code written in C language.
+Welcome to my C repository. This repository contains code on some algorithms written in C language.
