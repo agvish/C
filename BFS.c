@@ -14,7 +14,7 @@ int main()
 	int **graph,*state;
 	printf("\n********************************BREADTH FIRST TRAVERSAL********************************");
 	printf("\nEnter the no. of vertices in the graph. (Vertex starts from 0) : ");
-	scanf("%d",&vert);																		/*Holding no. of vertices*/
+	scanf("%d",&vert);														/*Holding no. of vertices*/
 		
 	/*Memory allocation for storing graph*/
 
@@ -26,16 +26,16 @@ int main()
 
 	state = malloc(sizeof(int) * vert);
 	for(i = 0 ; i < vert ; i++)
-		state[i] = initial;																	/*By default all vertex are at inital state*/
+		state[i] = initial;											/*By default all vertex are at inital state*/
 	
 	printf("\nEnter the adjacency matrix for graph. \n\nEnter the Orgin Vertex and Destination Vertex.\n\n");
 	for(i = 0 ; i < vert*vert ; i++)
 	{
 		printf("Enter edge %d(-1 -1 to quit ) : ",(i+1));
 		scanf("%d %d",&origin,&destin);
-		if((origin == -1) && (destin == -1))													/*Condition to terminate the input of graph*/
+		if((origin == -1) && (destin == -1))									/*Condition to terminate the input of graph*/
 			break;
-		if(origin >= vert || destin >= vert || origin < 0 || destin < 0)								/*If value of origin and destination vertex provided are invalid*/
+		if(origin >= vert || destin >= vert || origin < 0 || destin < 0)					/*If value of origin and destination vertex provided are invalid*/
 		{
 			printf("\nInvalid edge\n");
 			i--;
@@ -47,38 +47,38 @@ int main()
 		}
 	}
 	printf("The adjacency matrix according to the given input is : \n");
-	dispMat(graph,vert);																		/*Function call to display graph in adjacency matrix form*/
+	dispMat(graph,vert);												/*Function call to display graph in adjacency matrix form*/
 	printf("\n");
-	bfs_traversal(graph,state,vert);																/*Function call for Breadth First Search*/
+	bfs_traversal(graph,state,vert);										/*Function call for Breadth First Search*/
 	printf("\n");	
 	return 0;
 }
 void bfs_traversal(int **graph , int *state , int vert)
 {
 	int start , i , front = 0 , rear = 0 , v;
-	int *queue;																			/*Memory allocation for queue*/
+	int *queue;													/*Memory allocation for queue*/
 	printf("\nEnter the starting vertex. : ");
-	scanf("%d",&start);																		/*Holding the starting vertex*/
+	scanf("%d",&start);												/*Holding the starting vertex*/
 	if(start >= vert)
 	{
 		printf("\nInvalid Edge.\nEXITING.\n");
 		exit(1);
 	}
-	queue = malloc(sizeof(int) * vert);															/*Memory allocation for queue*/
-	queue[rear++] = start;																	/*Enqueuing the starting vertex to queue*/
-	state[start] = explored;																	/*Changing the state of starting vertex*/
+	queue = malloc(sizeof(int) * vert);										/*Memory allocation for queue*/
+	queue[rear++] = start;												/*Enqueuing the starting vertex to queue*/
+	state[start] = explored;											/*Changing the state of starting vertex*/
 	printf("\nBFS of graph is :\n");
-	while(front < vert)																		/*while queue is empty*/
+	while(front < vert)												/*while queue is empty*/
 	{
-		v = queue[front++];																/*Dequeuing the vertex from queue*/
-		printf("%d ",v);																		/*Printing the dequeued vertex*/
-		state[v]=visited;																	/*Changing the state of dequeued vertex*/
+		v = queue[front++];											/*Dequeuing the vertex from queue*/
+		printf("%d ",v);											/*Printing the dequeued vertex*/
+		state[v]=visited;											/*Changing the state of dequeued vertex*/
 		for(i = 0 ; i < vert ; i++)
 		{
-			if(graph[v][i] ==1 && state[i]==initial)												/*Searching for adjacent vertex of dequeued vertex which are not yet visited*/
+			if(graph[v][i] ==1 && state[i]==initial)							/*Searching for adjacent vertex of dequeued vertex which are not yet visited*/
 			{
-				queue[rear++] = i;															/*Enqueuing the not yet 'adjacent visited' vetex*/
-				state[i] = explored;															/*Changing the state to explored*/
+				queue[rear++] = i;									/*Enqueuing the not yet 'adjacent visited' vetex*/
+				state[i] = explored;									/*Changing the state to explored*/
 			}
 		}
 	}
