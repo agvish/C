@@ -55,10 +55,21 @@ int main()
 }
 void dfs_traversal(int **graph , int *state , int vert)
 {
-	int start , i , top = -1 , v;
+	int start , i , top = -1 , v , failure = 0;
 	int *stack;
 	printf("\nEnter the starting vertex. : ");
 	scanf("%d",&start);										/*Holding the starting vertex*/
+	for(i = 0 ; i < vert ; i++)								/*If starting vertex is not connected to Graph*/
+	{
+		if(graph[start][i] == 0)
+			failure++;
+	}
+	if(start >= vert || failure == vert)
+	{
+		printf("\nInvalid Vertex / Vertex not connected to Graph.\nEXITING.\n");
+		exit(1);
+	}
+
 	if(start >= vert)
 	{
 		printf("\nInvalid Edge.\nEXITING.\n");
