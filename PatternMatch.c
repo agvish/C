@@ -17,10 +17,10 @@ int main()
 }
 void patternMatch(char txt[], char pat[])
 {
-	int txt_len,pat_len,flag = 0;
-	int i = 0,j = 0,count = 0;
-	txt_len = strlen(txt);
-	pat_len = strlen(pat);
+	int txt_len,pat_len;
+	int i = 0,j = 0,count = 0;								/*'i' is at 0th position of text 'j' is at 0th position of pattern 'count' holds total no. of comparision made*/
+	txt_len = strlen(txt);									/*Calculate length of input 'text' string*/
+	pat_len = strlen(pat);									/*Calculate length of input 'pattern' string*/
 	while(i <= (txt_len - pat_len))
 	{
 		while(j < pat_len)
@@ -28,7 +28,7 @@ void patternMatch(char txt[], char pat[])
 			count++;
 			if(txt[i] == pat[j])
 			{
-				if(j == (pat_len-1))
+				if(j == (pat_len-1))						/*If 'j' has reached at the last character of pattern*/
 				{
 					printf("\nMatch found at position %d.",(i-j));
 					printf("\nNo. of comparision are %d.\n",count);
@@ -36,20 +36,17 @@ void patternMatch(char txt[], char pat[])
 				}
 				else
 				{
-					j++;
+					j++;							/*Increment both 'i' and 'j'*/
 					i++;
 				}
 			}
-			else
+			else									/*Encounter a mis match in text and pattern*/
 			{
-				i = (i - j + 1);
-				j = 0;
+				i = (i - j + 1);						/*'i' is now positioned back at '(j+1)' characters of text string */
+				j = 0;								/*'j' is now positioned at starting of pattern string*/
 				break;
 			}
 		}
 	}
-	if(flag == 0)
-	{
-		printf("\nNo match found.");
-	}
+	printf("\nNo match found.");
 }
