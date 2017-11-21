@@ -55,13 +55,18 @@ int main()
 }
 void bfs_traversal(int **graph , int *state , int vert)
 {
-	int start , i , front = 0 , rear = 0 , v;
+	int start , i , front = 0 , rear = 0 , v , failure = 0;
 	int *queue;										/*Memory allocation for queue*/
 	printf("\nEnter the starting vertex. : ");
 	scanf("%d",&start);									/*Holding the starting vertex*/
-	if(start >= vert)
+	for(i = 0 ; i < vert ; i++)								/*If starting vertex is not connected to Graph*/
 	{
-		printf("\nInvalid Edge.\nEXITING.\n");
+		if(graph[start][i] == 0)
+			failure++;
+	}
+	if(start >= vert || failure == vert)
+	{
+		printf("\nInvalid Vertex / Vertex not connected to Graph.\nEXITING.\n");
 		exit(1);
 	}
 	queue = malloc(sizeof(int) * vert);							/*Memory allocation for queue*/
